@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "02a966b99dc6a98fb0e738b260816f7193a8f17aa1df90f0071e93edfd7a5365"
+            "sha256": "dec990a28d5478e4d9e83d3815893a697b646ff6303de055a6c0c426667cbbf2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -153,6 +153,14 @@
             "markers": "python_version >= '3.6'",
             "version": "==2.0.1"
         },
+        "marshmallow": {
+            "hashes": [
+                "sha256:04438610bc6dadbdddb22a4a55bcc7f6f8099e69580b2e67f5a681933a1f4400",
+                "sha256:4c05c1684e0e97fe779c62b91878f173b937fe097b356cd82f793464f5bc6138"
+            ],
+            "index": "pypi",
+            "version": "==3.14.1"
+        },
         "pydispatcher": {
             "hashes": [
                 "sha256:5570069e1b1769af1fe481de6dd1d3a388492acddd2cdad7a3bde145615d5caf",
@@ -190,6 +198,13 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
             "version": "==1.26.7"
+        },
+        "uwsgi": {
+            "hashes": [
+                "sha256:88ab9867d8973d8ae84719cf233b7dafc54326fcaec89683c3f9f77c002cdff9"
+            ],
+            "index": "pypi",
+            "version": "==2.0.20"
         },
         "werkzeug": {
             "hashes": [

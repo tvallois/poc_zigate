@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 zigate = "*"
 flask = "*"
+marshmallow = "*"
+uwsgi = "*"
 
 [dev-packages]
 black = "*"
