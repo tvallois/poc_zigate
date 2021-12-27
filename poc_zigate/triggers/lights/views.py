@@ -3,10 +3,10 @@ from flask.wrappers import Response
 import zigate
 from poc_zigate import zigate_client
 
-lights_blueprint = Blueprint("lights", __name__, url_prefix="/triggers/lights")
+app = Blueprint("lights", __name__, url_prefix="/triggers/lights")
 
 
-@lights_blueprint.route("/switch_on/<string:addr_device>", methods=["POST"])
+@app.route("/switch_on/<string:addr_device>", methods=["POST"])
 def switch_on(addr_device: str) -> Response:
     device = zigate_client.get_device_from_addr(addr_device)
     if not device:
@@ -24,7 +24,7 @@ def switch_on(addr_device: str) -> Response:
     return jsonify({"message": "success"})
 
 
-@lights_blueprint.route("/switch_off/<string:addr_device>", methods=["POST"])
+@app.route("/switch_off/<string:addr_device>", methods=["POST"])
 def switch_off(addr_device: str) -> Response:
     device = zigate_client.get_device_from_addr(addr_device)
     if not device:

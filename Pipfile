@@ -8,6 +8,7 @@ zigate = "*"
 flask = "*"
 marshmallow = "*"
 uwsgi = "*"
+"rpi.gpio" = "*"
 
 [dev-packages]
 black = "*"
