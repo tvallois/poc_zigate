@@ -6,7 +6,7 @@ class InfoSchema(Schema):
     ieee = fields.String(required=True, dump_only=True)
     lqi = fields.Int(strict=True, required=True, dump_only=True)
     mac_capability = fields.String(required=True, dump_only=True)
-    last_seen = fields.DateTime(required=True, dump_only=True)
+    last_seen = fields.String(required=True, dump_only=True)
 
 
 class DeviceSchema(Schema):
