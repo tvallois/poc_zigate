@@ -27,7 +27,7 @@ def setup_test_environment(app: Flask, test_mapping: Dict[str, Any]) -> None:
 
 def setup_production_environment(app: Flask) -> None:
     app.config.from_mapping(
-        {"zigate_client": cast(zigate.ZiGateGPIO, zigate.connect(port="auto", gpio=True, path=None))}
+        {"ZIGATE_CLIENT": cast(zigate.ZiGateGPIO, zigate.connect(port="auto", gpio=True, path=None))}
     )
 
 
