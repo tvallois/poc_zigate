@@ -1,3 +1,4 @@
+from typing import Tuple
 from flask import Blueprint, current_app
 from flask.json import jsonify
 from flask.wrappers import Response
@@ -7,9 +8,9 @@ app = Blueprint("devices", __name__, url_prefix="/devices")
 
 
 @app.route("/start_inclusion_mode", methods=["POST"])
-def start_inclusion_mode() -> Response:
+def start_inclusion_mode() -> Tuple[Response, int] | Response:
     if current_app.config["ZIGATE_CLIENT"].is_permitting_join():
-        return jsonify({"message": "zigate already in inclusion mode"})
+        return jsonify({"message": "zigate already in inclusion mode"}), 400
     current_app.config["ZIGATE_CLIENT"].permit_join()
     return jsonify({"message": "success"})
 

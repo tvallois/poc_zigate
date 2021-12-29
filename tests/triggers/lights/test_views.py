@@ -26,7 +26,8 @@ class TriggerLightsViewTestCase(unittest.TestCase):
             mock_get_device_from_addr = Mock(return_value=None)
             self.mock_zigate_client.get_device_from_addr = mock_get_device_from_addr
             response = client.post("/triggers/lights/switch_on/mock_addr")
-            assert response.json == [{"message": "device with address mock_addr does not exist"}, 400]
+            assert response.json == {"message": "device with address mock_addr does not exist"}
+            assert response.status_code == 400
             mock_get_device_from_addr.assert_called_once_with("mock_addr")
 
     def test_switch_off(self) -> None:
@@ -45,5 +46,6 @@ class TriggerLightsViewTestCase(unittest.TestCase):
             mock_get_device_from_addr = Mock(return_value=None)
             self.mock_zigate_client.get_device_from_addr = mock_get_device_from_addr
             response = client.post("/triggers/lights/switch_off/mock_addr")
-            assert response.json == [{"message": "device with address mock_addr does not exist"}, 400]
+            assert response.json == {"message": "device with address mock_addr does not exist"}
+            assert response.status_code == 400
             mock_get_device_from_addr.assert_called_once_with("mock_addr")
