@@ -21,6 +21,7 @@ class DeviceViewTestCase(unittest.TestCase):
                     },
                     "missing": False,
                     "discovery": "mock_discovery",
+                    "properties": [{"attribute": 0, "name": "onoff"}],
                 }
             ]
             self.mock_zigate_client.devices = devices
@@ -43,3 +44,21 @@ class DeviceViewTestCase(unittest.TestCase):
             response = client.post("/devices/start_inclusion_mode")
             assert response.json == {"message": "zigate already in inclusion mode"}
             mock_is_permitting_join.assert_called_once_with()
+
+    def test_get_property_by_name(self) -> None:
+        with self.app.test_client() as client:
+            mock_get_property = Mock(return_value={"attribute": 0, "data": False, "name": "onoff", "value": False})
+            mock_device = Mock(get_property=mock_get_property)
+            mock_get_device_from_addr = Mock(return_value=mock_device)
+            self.mock_zigate_client.get_device_from_addr = mock_get_device_from_addr
+            response = client.get("/devices/mock_addr/onoff")
+            assert response.status_code == 200
+            assert response.json == {"attribute": 0, "data": False, "name": "onoff"}
+
+    def test_get_property_by_name_with_invalid_property_name(self) -> None:
+        with self.app.test_client() as client:
+            response = client.get("/devices/mock_addr/mock_property_name")
+            assert response.status_code == 400
+            assert response.json == {
+                "message": "mock_property_name is invalid. Valid property names are manufacturer, colour_temperature, onoff, current_level"
+            }
